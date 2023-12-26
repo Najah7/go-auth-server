@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  auth-server:
+    container_name: auth-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    # TODO: after adding sqlite dbfile, uncomment the following lines
+    # environment:
+    #   - DATABASE_URL=/path/to/your/dbfile.db 
+    # volumes:
+    #   - /path/to/your/dbfile.db:/path/to/your/dbfile.db 
