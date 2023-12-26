@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	_ "github.com/Najah7/go-auth-api/models"
 )
 
 func main() {
