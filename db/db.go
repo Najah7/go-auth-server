@@ -10,11 +10,11 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 
 	"github.com/Najah7/go-auth-server/models"
-	
 )
 
 // dbDriver is a database driver
 const dbDriver = "sqlite3"
+
 // dbSource is a database source
 const dbSource = "./database.db"
 
@@ -22,7 +22,6 @@ const dbSource = "./database.db"
 type DB struct {
 	*sql.DB
 }
-
 
 // OpenDB opens a database
 func OpenDB() (*DB, error) {
@@ -34,7 +33,6 @@ func OpenDB() (*DB, error) {
 
 	return &DB{db}, nil
 }
-
 
 // InitDB initializes a database
 func InitDB(db *DB) (sql.Result, error) {
@@ -69,7 +67,6 @@ func InsertUser(db *DB, user_id string, password string, nickname string, commen
 	}
 	return SelectUser(db, user_id)
 }
-
 
 // SelectUser selects a user
 func SelectUser(db *DB, user_id string) (models.User, error) {

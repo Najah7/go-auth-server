@@ -1,16 +1,16 @@
 package db
 
 import (
-	"testing"
 	"os"
+	"testing"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
 // RemoveFile removes a file
 func removeFile(filename string) {
-    err := os.Remove(filename)
-    if err != nil {
+	err := os.Remove(filename)
+	if err != nil {
 		panic(err)
 	}
 }
@@ -18,13 +18,13 @@ func removeFile(filename string) {
 // DBファイルを削除するテストラッパー関数
 func TestMain(m *testing.M) {
 	// before test
-	
+
 	// run test
-    exitVal := m.Run()
+	exitVal := m.Run()
 
 	// after test
-    removeFile(dbSource)
-    os.Exit(exitVal)
+	removeFile(dbSource)
+	os.Exit(exitVal)
 }
 
 func TestOpenDB(t *testing.T) {
@@ -41,7 +41,6 @@ func TestOpenDB(t *testing.T) {
 		t.Fatal(err)
 	}
 }
-
 
 func TestInitDB(t *testing.T) {
 	db, err := OpenDB()
@@ -98,7 +97,7 @@ func TestSelectUser(t *testing.T) {
 
 	// insert user
 	InsertUser(db, "test_id", "test_password", "test_nickname", "test_comment")
-	
+
 	// select user
 	user, err := SelectUser(db, "test_id")
 	if err != nil {
@@ -124,7 +123,7 @@ func TestUpdateUser(t *testing.T) {
 
 	// update user
 	UpdateUser(db, "test_id", "new_password", "new_nickname", "new_comment")
-	
+
 	// check if the user is updated
 	user, err := SelectUser(db, "test_id")
 	if err != nil {
